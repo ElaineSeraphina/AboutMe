@@ -50,7 +50,7 @@ const MobileControls: React.FC<MobileControlsProps> = ({ onSectionChange, onBack
               }}
               className="text-left text-sm py-2 px-3 bg-black/50 border border-[#00ff41]/30 text-[#00ff41] rounded hover:bg-[#00ff41]/20 transition-colors"
             >
-              &gt; SOCIAL_LINKS
+               SOCIAL_LINKS
             </button>
             <button 
               onClick={() => {
@@ -59,7 +59,8 @@ const MobileControls: React.FC<MobileControlsProps> = ({ onSectionChange, onBack
               }}
               className="text-left text-sm py-2 px-3 bg-black/50 border border-[#00ff41]/30 text-[#00ff41] rounded hover:bg-[#00ff41]/20 transition-colors"
             >
-              &gt; PROJECTS
+              
+               PROJECTS
             </button>
           </div>
         </div>

@@ -1,10 +1,11 @@
-
 'use client';
 import { useState, useEffect } from 'react';
 import TypewriterEffect from './TypewriterEffect';
+
 interface TerminalInterfaceProps {
   activeSection: string;
 }
+
 const TerminalInterface: React.FC<TerminalInterfaceProps> = ({ activeSection }) => {
   const [displayedContent, setDisplayedContent] = useState<string[]>([]);
   const [isTyping, setIsTyping] = useState<boolean>(true);
@@ -17,90 +18,108 @@ const TerminalInterface: React.FC<TerminalInterfaceProps> = ({ activeSection }) 
     switch (activeSection) {
       case 'profile':
         content = [
-          '> ACCESSING PERSONAL DATA...',
-          '> DECRYPTION COMPLETE',
+          '> INITIATING SECURE CONNECTION...',
+          '> ACCESSING NEURAL DATABASE...',
+          '> DECRYPTION PROTOCOL ACTIVATED',
           '',
-          '>> NAME: Elaine',
-          '>> STATUS: Online',
-          '>> OCCUPATION: Coder | Web3 Explorer',
+          '>> PERSONAL DATA STREAM',
+          '------------------------',
           '',
-          '>> BIO:',
-          'I\'m passionate about coding and exploring the Web3 space.',
-          'Most of my projects are built from a combination of logic, curiosity, and imagination.',
-          'I have a strong interest in automation and enjoy designing systems that operate independently.',
+          '>> IDENTITY: Elaine',
+          '>> STATUS: Online | Active',
+          '>> ROLE: Digital Architect & Web3 Explorer',
           '',
-          '>> SKILLS:',
-          '- Coding',
-          '- Web3 Development',
-          '- System Automation',
-          '- Creative Design',
+          '>> NEURAL PROFILE:',
+          'A digital native exploring the frontiers of code and Web3.',
+          'Specialized in crafting autonomous systems and digital experiences.',
+          'Currently pushing the boundaries of what\'s possible in the digital realm.',
           '',
-          '> END OF FILE'
+          '>> CORE COMPETENCIES:',
+          '- [▓▓▓▓▓▓▓▓▓▓] Advanced Coding',
+          '- [▓▓▓▓▓▓▓▓░░] Web3 Development',
+          '- [▓▓▓▓▓▓▓▓▓░] System Automation',
+          '- [▓▓▓▓▓▓▓░░░] Creative Design',
+          '',
+          '> END OF DATA STREAM',
+          '> CONNECTION SECURE'
         ];
         break;
       case 'social':
         content = [
-          '> ACCESSING SOCIAL NETWORK NODES...',
-          '> CONNECTION ESTABLISHED',
+          '> ESTABLISHING SECURE CHANNELS...',
+          '> ACCESSING COMM NETWORKS...',
+          '> ENCRYPTION PROTOCOLS ACTIVE',
           '',
-          '>> SOCIAL LINKS:',
+          '>> COMMUNICATION NODES',
+          '----------------------',
           '',
-          '>> WARPCAST: @elaine16',
+          '>> WARPCAST UPLINK',
+          '   HANDLE: @elaine16',
           '   ACCESS: https://warpcast.com/elaine16',
+          '   STATUS: [ONLINE]',
           '',
-          '>> INSTAGRAM: @elaine16',
+          '>> VISUAL FEED',
+          '   CHANNEL: @elaine16',
           '   ACCESS: https://instagram.com/elaine16',
+          '   STATUS: [ACTIVE]',
           '',
-          '>> SECURE COMMS: elaine@email.com',
+          '>> SECURE COMMS',
+          '   ENCRYPT: elaine@email.com',
+          '   PROTOCOL: PGP-2025',
           '',
-          '> COMMUNICATION CHANNELS READY',
-          '> END OF FILE'
+          '> CHANNELS SECURED',
+          '> AWAITING INPUT'
         ];
         break;
       case 'projects':
         content = [
-          '> ACCESSING PROJECT DATABASE...',
-          '> DECRYPTING FILES...',
+          '> ACCESSING PROJECT MATRIX...',
+          '> LOADING DEVELOPMENT LOGS...',
+          '> COMPILING DATA...',
           '',
-          '>> PROJECT FILES:',
+          '>> PROJECT ARCHIVES',
+          '------------------',
           '',
-          '>> VERDA',
-          '   TYPE: Organization',
-          '   DESC: Virtual Environment Research and Development Association',
-          '   STATUS: Active',
+          '>> PROJECT: VERDA',
+          '   TYPE: Research Division',
+          '   FOCUS: Virtual Environment R&D',
+          '   STATUS: [OPERATIONAL]',
+          '   PROGRESS: [▓▓▓▓▓▓▓░░░] 70%',
           '',
-          '>> Elaine Token Club (ETC)',
-          '   TYPE: Web3',
-          '   DESC: Personal onchain community experiment',
-          '   STATUS: Operational',
+          '>> PROJECT: ETC',
+          '   TYPE: Web3 Initiative',
+          '   FOCUS: Community Experiments',
+          '   STATUS: [ACTIVE]',
+          '   PROGRESS: [▓▓▓▓▓▓░░░░] 60%',
           '',
-          '>> Telegram Miniapp',
-          '   TYPE: Software',
-          '   DESC: Automation & gamification experiments',
-          '   STATUS: In Development',
+          '>> PROJECT: TG-MINI',
+          '   TYPE: Automation Suite',
+          '   FOCUS: System Integration',
+          '   STATUS: [IN_DEVELOPMENT]',
+          '   PROGRESS: [▓▓▓▓░░░░░░] 40%',
           '',
-          '> PROJECT DATABASE CLOSED',
-          '> END OF FILE'
+          '> ARCHIVE ACCESSED',
+          '> UPDATES PENDING'
         ];
         break;
       case 'menu':
         content = [
-          '> WELCOME TO CYBERNET OS v20150.3.11',
-          '> NEURAL INTERFACE INITIALIZED',
-          '> SELECT A MODULE FROM THE MAIN MENU',
+          '> CYBERNET OS v20150.3.11',
+          '> NEURAL INTERFACE ACTIVE',
+          '> SYSTEM READY',
           '',
-          '> SYSTEM READY'
+          '>> SELECT MODULE TO PROCEED'
         ];
         break;
       default:
-        content = ['> ERROR: SECTION NOT FOUND'];
+        content = ['> ERROR: MODULE NOT FOUND'];
     }
     
     setDisplayedContent(content);
     
     const timer = setTimeout(() => {
       setIsTyping(false);
-    }, content.length * 100);
+    }, content.length * 50);
     
     return () => clearTimeout(timer);
   }, [activeSection]);
@@ -109,26 +128,15 @@ const TerminalInterface: React.FC<TerminalInterfaceProps> = ({ activeSection }) 
     <>
       <div className="terminal-header">
         <span className="terminal-title">{activeSection.toUpperCase()}.dat</span>
-        <div className="terminal-controls">
-          <span className="terminal-control"></span>
-          <span className="terminal-control"></span>
-          <span className="terminal-control"></span>
-        </div>
       </div>
-      <div className="terminal-content p-4 h-[70vh] overflow-y-auto">
-        {isTyping ? (
-          <TypewriterEffect text={displayedContent.join('\n')} speed={10} />
-        ) : (
-          displayedContent.map((line, index) => (
-            <div key={index} className={`terminal-line ${line.startsWith('>') ? 'text-[#00ff41]' : line.startsWith('>>') ? 'text-[#ff00ff]' : 'text-gray-300'}`}>
-              {line || '\u00A0'}
-            </div>
-          ))
-        )}
-        <div className="terminal-cursor"></div>
+      <div className="terminal-content">
+        <TypewriterEffect 
+          text={displayedContent.join('\n')} 
+          speed={30}
+        />
       </div>
     </>
   );
 };
+
 export default TerminalInterface;
-      

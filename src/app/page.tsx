@@ -1,9 +1,9 @@
-
 import CyberpunkPortfolio from './components/CyberpunkPortfolio';
+
 export default function Home() {
   return (
-    <main className="w-full min-h-screen bg-black overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center overflow-hidden">
       <CyberpunkPortfolio />
-    </main>
+    </div>
   );
 }
